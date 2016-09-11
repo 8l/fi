@@ -1,4 +1,4 @@
-//public domain, 2016
+//zlib license, 8l, 2016
 
 #include <GLFW/glfw3.h>
 
