@@ -128,14 +128,14 @@ console_new( void )
     normal.rise    = 0.0;
     normal.spacing = 0.0;
     normal.gamma   = 1.0;
-    normal.foreground_color    = black;
-    normal.background_color    = none;
+    normal.foreground_color    = white; //black;
+    normal.background_color    = black; //none;
     normal.underline           = 0;
-    normal.underline_color     = white;
+    normal.underline_color     = black; //white;
     normal.overline            = 0;
-    normal.overline_color      = white;
+    normal.overline_color      = black; //white;
     normal.strikethrough       = 0;
-    normal.strikethrough_color = white;
+    normal.strikethrough_color = black; //white;
 
     normal.font = texture_font_new_from_file( self->atlas, 13, "fonts/VeraMono.ttf" );
 
@@ -579,7 +579,6 @@ console_process( console_t *self,
 // ------------------------------------------------------- console activate ---
 void console_activate( console_t *self, char *input )
 {
-    //console_print( self, "Activate callback\n" );
     fprintf( stderr, "Activate callback : %s\n", input );
 }
 
@@ -587,7 +586,6 @@ void console_activate( console_t *self, char *input )
 // ------------------------------------------------------- console complete ---
 void console_complete( console_t *self, char *input )
 {
-    // console_print( self, "Complete callback\n" );
     fprintf( stderr, "Complete callback : %s\n", input );
 }
 
@@ -595,7 +593,6 @@ void console_complete( console_t *self, char *input )
 // ----------------------------------------------- console previous history ---
 void console_history_prev( console_t *self, char *input )
 {
-    // console_print( self, "History prev callback\n" );
     fprintf( stderr, "History prev callback : %s\n", input );
 }
 
@@ -603,7 +600,6 @@ void console_history_prev( console_t *self, char *input )
 // --------------------------------------------------- console next history ---
 void console_history_next( console_t *self, char *input )
 {
-    // console_print( self, "History next callback\n" );
     fprintf( stderr, "History next callback : %s\n", input );
 }
 
@@ -622,7 +618,8 @@ void init( void )
     console_connect( console, "history-prev", console_history_prev );
     console_connect( console, "history-next", console_history_next );
 
-    glClearColor( 1.00, 1.00, 1.00, 1.00 );
+    //glClearColor( 1.00, 1.00, 1.00, 1.00 );
+    glClearColor( 0.00, 0.00, 0.00, 1.00 );
     glDisable( GL_DEPTH_TEST );
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
     glEnable( GL_TEXTURE_2D );
