@@ -102,7 +102,7 @@ console_new( void )
         return self;
     }
     self->lines = vector_new( sizeof(char *) );
-    self->prompt = strdup( ">>> " );
+    self->prompt = ""; //strdup( ">>> " );
     self->cursor = 0;
     self->buffer = vertex_buffer_new( "vertex:3f,tex_coord:2f,color:4f" );
     self->input[0] = '\0';
@@ -481,7 +481,7 @@ console_process( console_t *self,
             {
                 (*console->handlers[__SIGNAL_ACTIVATE__])(console, console->input);
             }
-            console_print( self, self->prompt );
+            //console_print( self, self->prompt );
             console_print( self, self->input );
             console_print( self, "\n" );
             self->input[0] = '\0';
