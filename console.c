@@ -153,9 +153,9 @@ console_new( void )
     italic.font = texture_font_new_from_file( self->atlas, 13, "fonts/VeraMoBI.ttf" );
 
     markup_t faint = normal;
-    faint.foreground_color.r = 0.35;
-    faint.foreground_color.g = 0.35;
-    faint.foreground_color.b = 0.35;
+    faint.foreground_color.r = 1.0; //0.35;
+    faint.foreground_color.g = 1.0; //0.35;
+    faint.foreground_color.b = 1.0; //0.35;
 
     markup_t error = normal;
     error.foreground_color.r = 1.00;
