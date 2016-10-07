@@ -90,6 +90,7 @@ static console_t * console;
 GLuint shader;
 mat4   model, view, projection;
 int control_key_handled;
+int prev_y;
 
 
 // ------------------------------------------------------------ console_new ---
@@ -481,7 +482,7 @@ console_process( console_t *self,
             {
                 (*console->handlers[__SIGNAL_ACTIVATE__])(console, console->input);
             }
-            //console_print( self, self->prompt );
+	    prev_y = self->pen.y;
             console_print( self, self->input );
             console_print( self, "\n" );
             self->input[0] = '\0';
@@ -553,6 +554,7 @@ console_process( console_t *self,
         }
         else if( strcmp( action, "history-prev" ) == 0 )
         {
+	    self->pen.y = prev_y;
             if( console->handlers[__SIGNAL_HISTORY_PREV__] )
             {
                 (*console->handlers[__SIGNAL_HISTORY_PREV__])( console, console->input );
@@ -610,9 +612,9 @@ void init( void )
     control_key_handled = 0;
 
     console = console_new();
-    console_print( console,
-                   "OpenGL Freetype console\n"
-                   "Copyright 2011 Nicolas P. Rougier. All rights reserved.\n \n" );
+    //console_print( console,
+    //               "OpenGL Freetype console\n"
+    //               "Copyright 2011 Nicolas P. Rougier. All rights reserved.\n \n" );
     console_connect( console, "activate",     console_activate );
     console_connect( console, "complete",     console_complete );
     console_connect( console, "history-prev", console_history_prev );
